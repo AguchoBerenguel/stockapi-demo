@@ -44,9 +44,8 @@ app.UseSwaggerUI();
 app.MapControllers();
 using (var scope = app.Services.CreateScope())
 {
-    var mysqlConnection = builder.Configuration.GetConnectionString("DefaultConnection");
-    var migrador = new MigrationService(mysqlConnection);
-    await migrador.MigrarAsync();
+    var context = scope.ServiceProvider.GetRequiredService<StockDbContext>();
+    context.Database.Migrate(); 
 }
 
 app.Run();

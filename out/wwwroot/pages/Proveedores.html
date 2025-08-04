@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Proveedores</title>
+     <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+      body { background: #f8fafc; }
+      .bg-dark-blue { background: #19274d !important; }
+      .table-header { background: #2156d9; color: #fff; }
+      .card { box-shadow: 0 4px 18px #0001; }
+      .fw-bold { font-weight: 700; }
+      .form-label { font-weight: 500; }
+    </style>
+  </head>
+  <body>
+    <nav class="border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse no-underline">
+        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+         Proveedores
+        </span>
+      </a>  
+      <button
+        data-collapse-toggle="navbar-solid-bg"
+        type="button"
+        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        aria-controls="navbar-solid-bg"
+        aria-expanded="false"
+      >
+        <svg class="w-5 h-5" aria-hidden="true" fill="none" viewBox="0 0 17 14" xmlns="http://www.w3.org/2000/svg">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M1 1h15M1 7h15M1 13h15" />
+        </svg>
+      </button>
+      <div class="hidden w-full md:block md:w-auto" id="navbar-solid-bg">
+        <ul
+          class="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700">
+          <li>
+            <a href="GestionProductos.html"
+              class="no-underline block py-2 px-3 md:p-0 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+              aria-current="page">Gestion</a>
+          </li>
+          <li>
+            <a href="Movimientos.html"
+              class="no-underline block py-2 px-3 md:p-0 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Registros</a>
+          </li>
+          <li>
+            <a href="Proveedores.html"
+              class="no-underline block py-2 px-3 md:p-0 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Proveedores</a>
+          </li>
+          <li>
+            <a href="Soporte.html"
+              class="no-underline block py-2 px-3 md:p-0 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Soporte</a>
+          </li>
+           <li>
+                <button
+                  id="btnLogout"
+                  class="btn btn-danger"
+                  onclick="logout()"
+                >
+                  Cerrar sesión
+                </button>
+              </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+    <div class="container py-5">
+      <!-- Formulario para agregar proveedor -->
+      <div class="card mx-auto mb-4" style="max-width: 800px;">
+        <div class="card-body">
+          <h4 class="card-title mb-3 text-primary fw-bold">Agregar Proveedor</h4>
+          <form id="proveedor-form" class="row g-3">
+            <div class="col-md-3">
+              <label class="form-label">Proveedor</label>
+              <input type="text" class="form-control" id="nombre" required />
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">Teléfono</label>
+              <input type="text" class="form-control" id="telefono" required />
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">Correo electrónico</label>
+              <input type="email" class="form-control" id="correo" required />
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">Dirección</label>
+              <input type="text" class="form-control" id="direccion" required />
+            </div>
+            <div class="col-12 text-end mt-2">
+              <button type="submit" class="btn btn-primary px-4">Agregar</button>
+            </div>
+          </form>
+          <div id="mensaje" class="mt-2"></div>
+        </div>
+      </div>
+
+      <!-- Tabla de proveedores -->
+      <div class="card mx-auto" style="max-width: 1100px;">
+        <div class="card-body">
+          <h3 class="mb-4 fw-bold text-center">Lista de Proveedores</h3>
+          <div class="table-responsive">
+            <table class="table table-bordered align-middle text-center">
+              <thead>
+                <tr class="table-header">
+                  <th>PROVEEDOR</th>
+                  <th>TELÉFONO</th>
+                  <th>CORREO ELECTRÓNICO</th>
+                  <th>DIRECCIÓN</th>
+                  <th>BORRAR</th>
+                </tr>
+              </thead>
+              <tbody id="tabla-proveedores"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Tu JS -->
+    <script src="../js/proveedores.js"></script>
+  </body>
+</html>
