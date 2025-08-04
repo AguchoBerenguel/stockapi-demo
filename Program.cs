@@ -3,7 +3,7 @@ using StockApi.Data;
 using StockApi;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.WebHost.UseUrls("http://*:80");
+builder.WebHost.UseUrls("http://0.0.0.0:5000");
 
 // Cargar cadena de conexión de appsettings.json
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
