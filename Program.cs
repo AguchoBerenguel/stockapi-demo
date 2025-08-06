@@ -22,7 +22,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowFrontend", policy =>
     {
         policy
-            .WithOrigins("https://aguchoberenguel.github.io/StockFrontend-demo/")
+            .WithOrigins("https://aguchoberenguel.github.io")
             .AllowAnyMethod()
             .AllowAnyHeader();
     });
