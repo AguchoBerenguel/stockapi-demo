@@ -16,13 +16,13 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<StockDbContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
-// Configuración de CORS para permitir tu frontend
+// Configuración de CORS para permitir tu frontend de GitHub Pages
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
     {
         policy
-            .WithOrigins("https://aguchoberenguel.github.io")
+            .WithOrigins("https://aguchoberenguel.github.io") // Solo el dominio
             .AllowAnyMethod()
             .AllowAnyHeader();
     });
@@ -35,6 +35,8 @@ app.UseDefaultFiles();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+// Activar CORS antes de Authorization
 app.UseCors("AllowFrontend");
 
 app.UseAuthorization();
@@ -44,7 +46,7 @@ app.UseSwaggerUI();
 
 app.MapControllers();
 
-// Solo comprobar conexión a la base de datos (no aplicar migraciones automáticas)
+// Comprobar conexión a la base de datos
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<StockDbContext>();
@@ -58,6 +60,5 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
-// Puerto de ejecución
-var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
-app.Run($"http://0.0.0.0:{port}");
+// Ejecutar (Railway manejará el puerto y HTTPS)
+app.Run();

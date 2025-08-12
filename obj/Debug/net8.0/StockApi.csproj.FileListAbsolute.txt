@@ -237,11 +237,6 @@ C:\Users\agust\StockApi_Backend\StockApi\obj\Debug\net8.0\StockApi.MvcApplicatio
 C:\Users\agust\StockApi_Backend\StockApi\obj\Debug\net8.0\StockApi.sourcelink.json
 C:\Users\agust\StockApi_Backend\StockApi\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\agust\StockApi_Backend\StockApi\obj\Debug\net8.0\staticwebassets.development.json
-C:\Users\agust\StockApi_Backend\StockApi\obj\Debug\net8.0\staticwebassets\msbuild.StockApi.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\agust\StockApi_Backend\StockApi\obj\Debug\net8.0\staticwebassets\msbuild.build.StockApi.props
-C:\Users\agust\StockApi_Backend\StockApi\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.StockApi.props
-C:\Users\agust\StockApi_Backend\StockApi\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.StockApi.props
-C:\Users\agust\StockApi_Backend\StockApi\obj\Debug\net8.0\staticwebassets.pack.json
 C:\Users\agust\StockApi_Backend\StockApi\obj\Debug\net8.0\scopedcss\bundle\StockApi.styles.css
 C:\Users\agust\StockApi_Backend\StockApi\obj\Debug\net8.0\StockApi.csproj.Up2Date
 C:\Users\agust\StockApi_Backend\StockApi\obj\Debug\net8.0\StockApi.dll
@@ -254,3 +249,10 @@ C:\Users\agust\StockApi_Backend\StockApi\bin\Debug\net8.0\out\appsettings.Develo
 C:\Users\agust\StockApi_Backend\StockApi\bin\Debug\net8.0\out\appsettings.json
 C:\Users\agust\StockApi_Backend\StockApi\bin\Debug\net8.0\out\StockApi.deps.json
 C:\Users\agust\StockApi_Backend\StockApi\bin\Debug\net8.0\out\StockApi.runtimeconfig.json
+C:\Users\agust\StockApi_Backend\StockApi\bin\Debug\net8.0\StockApi.staticwebassets.endpoints.json
+C:\Users\agust\StockApi_Backend\StockApi\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\agust\StockApi_Backend\StockApi\obj\Debug\net8.0\rjimswa.dswa.cache.json
+C:\Users\agust\StockApi_Backend\StockApi\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+C:\Users\agust\StockApi_Backend\StockApi\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+C:\Users\agust\StockApi_Backend\StockApi\obj\Debug\net8.0\staticwebassets.build.json.cache
+C:\Users\agust\StockApi_Backend\StockApi\obj\Debug\net8.0\staticwebassets.build.endpoints.json
