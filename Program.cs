@@ -1,10 +1,10 @@
 using Microsoft.EntityFrameworkCore;
-using StockApi.Data; 
+using StockApi.Data;
 using StockApi;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Usa MYSQLCONN si está definido (producción), sino usa DefaultConnection (local)
+// Obtener la cadena de conexión desde variable de entorno o appsettings.json
 var connectionString = Environment.GetEnvironmentVariable("MYSQLCONN") 
     ?? builder.Configuration.GetConnectionString("DefaultConnection");
 
@@ -12,11 +12,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Configuración de EF Core con MySQL
+// Configurar DbContext
 builder.Services.AddDbContext<StockDbContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
-// Configuración de CORS para permitir frontend de GitHub Pages
+// Configuración de CORS para permitir tu frontend
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
@@ -30,7 +30,7 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Middlewares para servir frontend estático
+// Middlewares
 app.UseDefaultFiles();
 app.UseStaticFiles();
 
@@ -39,20 +39,25 @@ app.UseCors("AllowFrontend");
 
 app.UseAuthorization();
 
-// Swagger solo para debug
 app.UseSwagger();
 app.UseSwaggerUI();
 
-// Rutas de la API
 app.MapControllers();
 
-// Ejecuta migraciones al iniciar
+// Solo comprobar conexión a la base de datos (no aplicar migraciones automáticas)
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<StockDbContext>();
-    context.Database.Migrate(); 
+    if (!context.Database.CanConnect())
+    {
+        Console.WriteLine("No se pudo conectar a la base de datos.");
+    }
+    else
+    {
+        Console.WriteLine("Conexión a la base de datos exitosa.");
+    }
 }
 
-// Usa el puerto de Railway o 5000 por defecto
+// Puerto de ejecución
 var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
 app.Run($"http://0.0.0.0:{port}");
